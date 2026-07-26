@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import PageHeader from '../components/ui/PageHeader.jsx'
 import Panel from '../components/ui/Panel.jsx'
 import Badge from '../components/ui/Badge.jsx'
+import { FormSkeleton } from '../components/ui/Skeleton.jsx'
 import { IconUsers, IconMail, IconCheck, IconAlert } from '../components/Icons.jsx'
 import { getUser } from '../lib/api.js'
 import './UserDetail.css'
@@ -35,15 +36,15 @@ export default function UserDetail() {
   return (
     <>
       <PageHeader
-        title={loading ? 'Loading…' : user?.name || user?.email || 'Unknown User'}
-        subtitle={loading ? '' : `Joined ${user?.created_at ? new Date(user.created_at).toLocaleDateString() : '—'}`}
+        title={user?.name || user?.email || 'User Detail'}
+        subtitle={user ? `Joined ${user.created_at ? new Date(user.created_at).toLocaleDateString() : '—'}` : ''}
         onBack={() => navigate('/users')}
         badges={user ? <Badge tone={user.role === 'admin' ? 'success' : 'neutral'}>{user.role || 'user'}</Badge> : null}
         icon={<IconUsers size={22} />}
       />
 
       {loading ? (
-        <p style={{ color: 'var(--text-muted)', fontSize: 14 }}>Loading user details…</p>
+        <FormSkeleton fields={6} />
       ) : (
         <div className="grid-2-1">
           <div className="ud-detail" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>

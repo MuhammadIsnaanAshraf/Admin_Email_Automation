@@ -1,0 +1,129 @@
+.cs-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.cs-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  height: 38px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  color: var(--text-dim);
+  flex: 1;
+  max-width: 360px;
+}
+
+.cs-search__input {
+  flex: 1;
+  border: none;
+  background: none;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+}
+.cs-search__input::placeholder { color: var(--text-dim); }
+
+.cs-filters {
+  display: flex;
+  gap: 4px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 3px;
+}
+
+.cs-filter {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+  background: none;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.cs-filter:hover { color: var(--text); }
+.cs-filter--active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.cs-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+
+.cs-header__cell {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.cs-header__cell--email     { flex: 1; }
+.cs-header__cell--name      { width: 130px; flex-shrink: 0; }
+.cs-header__cell--status    { width: 80px; flex-shrink: 0; }
+.cs-header__cell--attempts  { width: 70px; flex-shrink: 0; text-align: center; }
+.cs-header__cell--scheduled { width: 150px; flex-shrink: 0; text-align: right; }
+.cs-header__cell--sent      { width: 150px; flex-shrink: 0; text-align: right; }
+
+.cs-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+}
+.cs-row:last-child { border-bottom: none; }
+.cs-row:hover { background: rgba(255,255,255,0.02); }
+
+.cs-cell {
+  font-size: 13px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cs-cell--email     { flex: 1; font-family: var(--mono); font-size: 12px; }
+.cs-cell--name      { width: 130px; flex-shrink: 0; }
+.cs-cell--status    { width: 80px; flex-shrink: 0; }
+.cs-cell--attempts  { width: 70px; flex-shrink: 0; text-align: center; font-family: var(--mono); font-size: 12px; color: var(--text-dim); }
+.cs-cell--scheduled { width: 150px; flex-shrink: 0; text-align: right; font-family: var(--mono); font-size: 11px; color: var(--text-dim); }
+.cs-cell--sent      { width: 150px; flex-shrink: 0; text-align: right; font-family: var(--mono); font-size: 11px; color: var(--text-dim); }
+
+.cs-error {
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--danger);
+}
+
+.cs-empty {
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}

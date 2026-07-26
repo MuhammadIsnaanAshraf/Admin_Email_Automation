@@ -74,6 +74,10 @@ export function listTemplates({ search = '', sort = 'updated_at', dir = 'desc', 
   return request(`/admin/templates?${qs.toString()}`, { signal })
 }
 
+export function getAdminTemplate(id) {
+  return request(`/admin/templates/${id}`)
+}
+
 // ── Admin — Lists ──
 
 export function listAdminLists({ search = '', sort = 'created_at', dir = 'desc', page = 1, pageSize = 50, signal } = {}) {
@@ -86,4 +90,26 @@ export function getListRecipients(listId, { filter = 'all', search = '', sort = 
   const qs = new URLSearchParams({ filter, sort, dir, page: String(page), pageSize: String(pageSize) })
   if (search) qs.set('search', search)
   return request(`/admin/lists/${listId}/recipients?${qs.toString()}`, { signal })
+}
+
+// ── Admin — Campaigns ──
+
+export function listAdminCampaigns({ search = '', sort = 'created_at', dir = 'desc', page = 1, pageSize = 50, signal } = {}) {
+  const qs = new URLSearchParams({ sort, dir, page: String(page), pageSize: String(pageSize) })
+  if (search) qs.set('search', search)
+  return request(`/admin/campaigns?${qs.toString()}`, { signal })
+}
+
+export function getAdminCampaignSends(campaignId, { filter = 'all', search = '', sort = 'scheduled_at', dir = 'asc', page = 1, pageSize = 50, signal } = {}) {
+  const qs = new URLSearchParams({ filter, sort, dir, page: String(page), pageSize: String(pageSize) })
+  if (search) qs.set('search', search)
+  return request(`/admin/campaigns/${campaignId}/sends?${qs.toString()}`, { signal })
+}
+
+export function listAllSends({ campaignName = '', userSearch = '', status = 'all', sort = 'scheduled_at', dir = 'desc', page = 1, pageSize = 50, signal } = {}) {
+  const qs = new URLSearchParams({ sort, dir, page: String(page), pageSize: String(pageSize) })
+  if (campaignName) qs.set('campaignName', campaignName)
+  if (userSearch) qs.set('userSearch', userSearch)
+  if (status !== 'all') qs.set('status', status)
+  return request(`/admin/sends?${qs.toString()}`, { signal })
 }

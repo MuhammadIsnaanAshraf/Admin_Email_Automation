@@ -1,0 +1,124 @@
+.as-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.as-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  height: 38px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  color: var(--text-dim);
+  max-width: 280px;
+  flex: 1;
+}
+
+.as-search__input {
+  flex: 1;
+  border: none;
+  background: none;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+}
+.as-search__input::placeholder { color: var(--text-dim); }
+
+.as-filters {
+  display: flex;
+  gap: 4px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 3px;
+}
+
+.as-filter {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+  background: none;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.as-filter:hover { color: var(--text); }
+.as-filter--active { background: var(--accent); color: #fff; }
+
+.as-table {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.as-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+
+.as-header__cell {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.as-header__cell--email     { flex: 1; min-width: 0; }
+.as-header__cell--name      { width: 110px; flex-shrink: 0; }
+.as-header__cell--status    { width: 80px; flex-shrink: 0; }
+.as-header__cell--campaign  { width: 150px; flex-shrink: 0; }
+.as-header__cell--owner     { width: 120px; flex-shrink: 0; }
+.as-header__cell--scheduled { width: 140px; flex-shrink: 0; text-align: right; }
+.as-header__cell--sent      { width: 140px; flex-shrink: 0; text-align: right; }
+
+.as-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+}
+.as-row:last-child { border-bottom: none; }
+.as-row:hover { background: rgba(255,255,255,0.02); }
+
+.as-cell {
+  font-size: 13px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.as-cell--email     { flex: 1; min-width: 0; font-family: var(--mono); font-size: 12px; }
+.as-cell--name      { width: 110px; flex-shrink: 0; }
+.as-cell--status    { width: 80px; flex-shrink: 0; }
+.as-cell--campaign  { width: 150px; flex-shrink: 0; }
+.as-cell--owner     { width: 120px; flex-shrink: 0; }
+.as-cell--scheduled { width: 140px; flex-shrink: 0; text-align: right; font-family: var(--mono); font-size: 11px; color: var(--text-dim); }
+.as-cell--sent      { width: 140px; flex-shrink: 0; text-align: right; font-family: var(--mono); font-size: 11px; color: var(--text-dim); }
+
+.as-empty {
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}

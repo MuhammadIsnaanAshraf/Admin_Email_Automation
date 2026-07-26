@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import PageHeader from '../components/ui/PageHeader.jsx'
 import Panel from '../components/ui/Panel.jsx'
 import Badge from '../components/ui/Badge.jsx'
+import { DataTableSkeleton } from '../components/ui/Skeleton.jsx'
 import { IconSearch, IconList, IconCheck, IconAlert } from '../components/Icons.jsx'
 import { getListRecipients } from '../lib/api.js'
 import './ListRecipients.css'
@@ -48,8 +49,8 @@ export default function ListRecipients() {
   return (
     <>
       <PageHeader
-        title={loading ? 'Loading…' : list?.name || list?.source_filename || 'Recipients'}
-        subtitle={loading ? '' : `${total} recipient${total !== 1 ? 's' : ''} • ${list?.valid_rows ?? '—'} valid, ${list?.invalid_rows ?? '—'} invalid • Owner: ${list?.owner?.name || list?.owner?.email || 'Unknown'}`}
+        title={list?.name || list?.source_filename || 'Recipients'}
+        subtitle={list ? `${total} recipient${total !== 1 ? 's' : ''} • ${list?.valid_rows ?? '—'} valid, ${list?.invalid_rows ?? '—'} invalid • Owner: ${list?.owner?.name || list?.owner?.email || 'Unknown'}` : ''}
         onBack={() => navigate('/lists')}
         icon={<IconList size={22} />}
       />
@@ -80,7 +81,7 @@ export default function ListRecipients() {
 
       <Panel padded={false}>
         {loading ? (
-          <div className="lr-empty">Loading recipients…</div>
+          <DataTableSkeleton rows={8} cols={5} />
         ) : recipients.length === 0 ? (
           <div className="lr-empty">No recipients found.</div>
         ) : (

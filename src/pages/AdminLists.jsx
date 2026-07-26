@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PageHeader from '../components/ui/PageHeader.jsx'
 import Badge from '../components/ui/Badge.jsx'
+import { ListSkeleton } from '../components/ui/Skeleton.jsx'
+import Pagination from '../components/ui/Pagination.jsx'
 import { IconSearch, IconList } from '../components/Icons.jsx'
 import { listAdminLists } from '../lib/api.js'
 import './AdminLists.css'
@@ -53,13 +55,20 @@ export default function AdminLists() {
         </div>
       </div>
 
-      <div className="alist-table">
-        {loading ? (
-          <div className="alist-empty">Loading lists…</div>
-        ) : lists.length === 0 ? (
-          <div className="alist-empty">No lists found.</div>
-        ) : (
-          lists.map((l) => (
+      {loading ? (
+        <div className="alist-table"><ListSkeleton items={5} /></div>
+      ) : lists.length === 0 ? (
+        <div className="alist-table"><div className="alist-empty">No lists found.</div></div>
+      ) : (
+        <div className="alist-table">
+          <div className="alist-header">
+            <span className="alist-header__cell alist-header__cell--name">Name</span>
+            <span className="alist-header__cell alist-header__cell--owner">Owner</span>
+            <span className="alist-header__cell alist-header__cell--status">Status</span>
+            <span className="alist-header__cell alist-header__cell--stats">Valid / Total</span>
+            <span className="alist-header__cell alist-header__cell--date">Created</span>
+          </div>
+          {lists.map((l) => (
             <div key={l.id} className="alist-row" onClick={() => navigate(`/lists/${l.id}`)}>
               <div className="alist-row__icon">
                 <IconList size={18} />
@@ -79,9 +88,10 @@ export default function AdminLists() {
               </span>
               <span className="alist-row__date">{l.created_at ? new Date(l.created_at).toLocaleDateString() : '—'}</span>
             </div>
-          ))
-        )}
-      </div>
+          ))}
+          <Pagination page={page} pageSize={pageSize} total={total} onPageChange={setPage} />
+        </div>
+      )}
     </>
   )
 }

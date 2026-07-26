@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import PageHeader from '../components/ui/PageHeader.jsx'
 import Panel from '../components/ui/Panel.jsx'
+import { ListSkeleton } from '../components/ui/Skeleton.jsx'
 import { IconLogs } from '../components/Icons.jsx'
 import { getSystemLogs } from '../lib/api.js'
 import './AdminLogs.css'
@@ -26,7 +27,7 @@ export default function AdminLogs() {
 
       <Panel padded={false}>
         {loading ? (
-          <div className="al-empty">Loading logs…</div>
+          <ListSkeleton items={5} />
         ) : logs.length === 0 ? (
           <div className="al-empty">No logs available.</div>
         ) : (

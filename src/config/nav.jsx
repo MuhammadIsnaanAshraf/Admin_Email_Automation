@@ -3,6 +3,8 @@ import {
   IconUsers,
   IconFile,
   IconList,
+  IconMail,
+  IconActivity,
   IconLogs,
   IconSettings,
 } from '../components/Icons.jsx'
@@ -12,6 +14,8 @@ export const NAV_ITEMS = [
   { path: '/users', label: 'Users', icon: IconUsers },
   { path: '/templates', label: 'Templates', icon: IconFile },
   { path: '/lists', label: 'Lists', icon: IconList },
+  { path: '/campaigns', label: 'Campaigns', icon: IconMail },
+  { path: '/sends', label: 'All Sends', icon: IconActivity },
   { path: '/logs', label: 'System Logs', icon: IconLogs },
   { path: '/settings', label: 'Settings', icon: IconSettings },
 ]

@@ -9,8 +9,12 @@ import AdminDashboard from './pages/AdminDashboard.jsx'
 import AdminUsers from './pages/AdminUsers.jsx'
 import UserDetail from './pages/UserDetail.jsx'
 import AdminTemplates from './pages/AdminTemplates.jsx'
+import TemplateDetail from './pages/TemplateDetail.jsx'
 import AdminLists from './pages/AdminLists.jsx'
 import ListRecipients from './pages/ListRecipients.jsx'
+import AdminCampaigns from './pages/AdminCampaigns.jsx'
+import CampaignSends from './pages/CampaignSends.jsx'
+import AdminAllSends from './pages/AdminAllSends.jsx'
 import AdminLogs from './pages/AdminLogs.jsx'
 import AdminSettings from './pages/AdminSettings.jsx'
 
@@ -29,8 +33,12 @@ export default function App() {
                 <Route path="/users" element={<AdminUsers />} />
                 <Route path="/users/:id" element={<UserDetail />} />
                 <Route path="/templates" element={<AdminTemplates />} />
+                <Route path="/templates/:id" element={<TemplateDetail />} />
+                <Route path="/campaigns" element={<AdminCampaigns />} />
+                <Route path="/campaigns/:id" element={<CampaignSends />} />
                 <Route path="/lists" element={<AdminLists />} />
                 <Route path="/lists/:id" element={<ListRecipients />} />
+                <Route path="/sends" element={<AdminAllSends />} />
                 <Route path="/logs" element={<AdminLogs />} />
                 <Route path="/settings" element={<AdminSettings />} />
               </Route>
