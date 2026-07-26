@@ -1,0 +1,46 @@
+.al-empty {
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.al-list {
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.al-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.al-row:last-child { border-bottom: none; }
+
+.al-row__time {
+  color: var(--text-dim);
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 160px;
+}
+
+.al-row__level {
+  font-weight: 600;
+  width: 60px;
+  flex-shrink: 0;
+}
+.al-row__level[data-level="error"]   { color: var(--danger); }
+.al-row__level[data-level="warn"]    { color: var(--warn); }
+.al-row__level[data-level="info"]    { color: var(--info); }
+.al-row__level[data-level="success"] { color: var(--success); }
+
+.al-row__msg {
+  color: var(--text);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,127 @@
+.at-toolbar {
+  margin-bottom: 18px;
+}
+
+.at-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  height: 42px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  color: var(--text-dim);
+  max-width: 420px;
+}
+
+.at-search__input {
+  flex: 1;
+  border: none;
+  background: none;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+}
+.at-search__input::placeholder { color: var(--text-dim); }
+
+.at-table {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.at-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s ease;
+}
+.at-row:last-child { border-bottom: none; }
+.at-row:hover { background: rgba(255,255,255,0.02); }
+
+.at-row__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(77, 155, 240, 0.12);
+  color: var(--info);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.at-row__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.at-row__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.at-row__subject {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.at-row__owner {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 140px;
+  flex-shrink: 0;
+}
+
+.at-row__owner-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.at-row__owner-email {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.at-row__vars {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 50px;
+  text-align: right;
+}
+
+.at-row__date {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 100px;
+  text-align: right;
+}
+
+.at-empty {
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}

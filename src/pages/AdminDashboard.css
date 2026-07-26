@@ -1,0 +1,80 @@
+.ad-stat {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+
+.ad-stat__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ad-stat__icon--users     { background: rgba(70, 240, 25, 0.12); color: var(--success); }
+.ad-stat__icon--campaigns { background: rgba(77, 155, 240, 0.12); color: var(--info); }
+.ad-stat__icon--templates { background: rgba(155, 77, 240, 0.12); color: #b47df0; }
+.ad-stat__icon--lists     { background: rgba(240, 180, 41, 0.12); color: var(--warn); }
+.ad-stat__icon--sent      { background: rgba(240, 180, 41, 0.12); color: var(--warn); }
+.ad-stat__icon--active    { background: rgba(240, 83, 63, 0.12); color: var(--danger); }
+
+.ad-stat__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ad-stat__value {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-strong);
+  line-height: 1.1;
+}
+
+.ad-stat__label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.ad-users__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+.ad-users__row:last-child { border-bottom: none; }
+.ad-users__row:hover { opacity: 0.8; }
+
+.ad-users__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ad-users__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.ad-users__email {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}

@@ -1,0 +1,50 @@
+.ud-error {
+  padding: 40px;
+  text-align: center;
+  color: var(--danger);
+  background: var(--danger-bg);
+  border-radius: var(--r-md);
+  font-size: 15px;
+}
+
+.ud-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.ud-field:last-child { border-bottom: none; }
+
+.ud-field__label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.ud-field__value {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.ud-conn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ud-conn--ok { color: var(--success); }
+.ud-conn--no { color: var(--text-muted); }
+
+.ud-mini {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text);
+}
