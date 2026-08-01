@@ -7,6 +7,7 @@ import Button from '../components/ui/Button.jsx'
 import { FormSkeleton } from '../components/ui/Skeleton.jsx'
 import { IconUsers, IconMail, IconCheck, IconAlert, IconCreditCard } from '../components/Icons.jsx'
 import ActivateSubscriptionModal from '../components/ActivateSubscriptionModal.jsx'
+import SendGapPanel from '../components/SendGapPanel.jsx'
 import { getUser } from '../lib/api.js'
 import './UserDetail.css'
 
@@ -140,6 +141,12 @@ export default function UserDetail() {
                 </div>
               )}
             </Panel>
+
+            <SendGapPanel
+              userId={id}
+              sendSettings={user?.sendSettings}
+              onSaved={(sendSettings) => setUser((u) => (u ? { ...u, sendSettings } : u))}
+            />
 
             <Panel title="Stats">
               <div className="ud-mini">

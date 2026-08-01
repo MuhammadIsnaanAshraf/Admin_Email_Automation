@@ -55,6 +55,15 @@ export function getUser(id) {
   return request(`/admin/users/${id}`)
 }
 
+/* Per-account pacing override. Pass sendGapSeconds: null to clear it and put
+   the account back on the platform default. */
+export function updateUserSendSettings(id, { sendGapSeconds }) {
+  return request(`/admin/users/${id}/send-settings`, {
+    method: 'PATCH',
+    body: JSON.stringify({ sendGapSeconds }),
+  })
+}
+
 // ── Admin — System ──
 
 export function getSystemStats() {
