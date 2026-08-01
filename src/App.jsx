@@ -8,6 +8,7 @@ import AuthCallback from './pages/AuthCallback.jsx'
 import AdminDashboard from './pages/AdminDashboard.jsx'
 import AdminUsers from './pages/AdminUsers.jsx'
 import UserDetail from './pages/UserDetail.jsx'
+import AdminSubscriptions from './pages/AdminSubscriptions.jsx'
 import AdminTemplates from './pages/AdminTemplates.jsx'
 import TemplateDetail from './pages/TemplateDetail.jsx'
 import AdminLists from './pages/AdminLists.jsx'
@@ -32,6 +33,7 @@ export default function App() {
                 <Route path="/" element={<AdminDashboard />} />
                 <Route path="/users" element={<AdminUsers />} />
                 <Route path="/users/:id" element={<UserDetail />} />
+                <Route path="/subscriptions" element={<AdminSubscriptions />} />
                 <Route path="/templates" element={<AdminTemplates />} />
                 <Route path="/templates/:id" element={<TemplateDetail />} />
                 <Route path="/campaigns" element={<AdminCampaigns />} />

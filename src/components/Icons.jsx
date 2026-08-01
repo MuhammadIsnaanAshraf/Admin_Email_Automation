@@ -144,6 +144,21 @@ export const IconList = ({ size = 18 }) => (
   </svg>
 )
 
+export const IconCreditCard = ({ size = 18 }) => (
+  <svg {...base(size)}>
+    <rect x="2" y="5" width="20" height="14" rx="2" />
+    <path d="M2 10h20" />
+    <path d="M6 15h4" />
+  </svg>
+)
+
+export const IconClock = ({ size = 18 }) => (
+  <svg {...base(size)}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 7v5l3 3" />
+  </svg>
+)
+
 export const IconLogo = ({ size = 24 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="#0a0f0a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M4 9a4 4 0 0 1 8 0c0 3-4 3-4 6a4 4 0 0 0 8 0" />

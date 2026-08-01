@@ -113,3 +113,23 @@ export function listAllSends({ campaignName = '', userSearch = '', status = 'all
   if (status !== 'all') qs.set('status', status)
   return request(`/admin/sends?${qs.toString()}`, { signal })
 }
+
+// ── Admin — Subscriptions ──
+
+export function listSubscriptions({ search = '', filter = 'all', sort = 'period_end', dir = 'desc', page = 1, pageSize = 50, signal } = {}) {
+  const qs = new URLSearchParams({ filter, sort, dir, page: String(page), pageSize: String(pageSize) })
+  if (search) qs.set('search', search)
+  return request(`/admin/subscriptions?${qs.toString()}`, { signal })
+}
+
+export function getSubscriptionHistory(userId, { page = 1, pageSize = 20, signal } = {}) {
+  const qs = new URLSearchParams({ page: String(page), pageSize: String(pageSize) })
+  return request(`/admin/subscriptions/${userId}/history?${qs.toString()}`, { signal })
+}
+
+export function activateSubscription(userId, { amount, currency, paymentMethod, note, whatsappNumber }) {
+  return request(`/admin/subscriptions/${userId}/activate`, {
+    method: 'POST',
+    body: JSON.stringify({ amount, currency, paymentMethod, note, whatsappNumber }),
+  })
+}

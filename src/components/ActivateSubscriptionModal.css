@@ -1,0 +1,89 @@
+.asm__form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.asm__banner {
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  background: var(--accent-dim);
+  border: 1px solid rgba(70, 240, 25, 0.2);
+  border-radius: var(--r-sm);
+}
+.asm__banner strong { color: var(--text-strong); }
+
+.asm__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.asm__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+.asm__label i {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
+.asm__input,
+.asm__select {
+  width: 100%;
+  padding: 11px 13px;
+  font-size: 14px;
+  color: var(--text-strong);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.asm__input::placeholder { color: var(--text-faint); }
+.asm__input:focus,
+.asm__select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.asm__select-wrap { position: relative; }
+.asm__select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 38px;
+}
+.asm__select-wrap::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--text-muted);
+  border-bottom: 2px solid var(--text-muted);
+  transform: translateY(-65%) rotate(45deg);
+  pointer-events: none;
+}
+.asm__select option {
+  background: var(--surface-2);
+  color: var(--text-strong);
+}
+
+.asm__state {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13.5px;
+}
+.asm__state--error {
+  color: var(--danger);
+  padding: 12px 14px;
+  background: var(--danger-bg);
+  border: 1px solid rgba(240, 83, 63, 0.24);
+  border-radius: var(--r-sm);
+}
