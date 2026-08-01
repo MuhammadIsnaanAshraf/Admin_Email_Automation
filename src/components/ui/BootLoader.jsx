@@ -59,7 +59,7 @@ export default function BootLoader() {
       `}</style>
       <div className="boot-screen__logo"><IconLogo size={28} /></div>
       <div className="boot-screen__ring" />
-      <div className="boot-screen__word">FlowState</div>
+      <div className="boot-screen__word">Zenviqo</div>
       <div className="boot-screen__tag">Admin console loading</div>
     </div>
   )

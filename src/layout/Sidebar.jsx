@@ -15,7 +15,7 @@ export default function Sidebar({ open, onClose }) {
           <div className="sidebar__logo"><IconLogo size={24} /></div>
           <div className="sidebar__brand-text">
             <div className="sidebar__brand-row">
-              <span className="sidebar__brand-name">FlowState</span>
+              <span className="sidebar__brand-name">Zenviqo</span>
               <span className="sidebar__admin">ADMIN</span>
             </div>
             <span className="sidebar__brand-sub">ENGINEERING CONSOLE</span>

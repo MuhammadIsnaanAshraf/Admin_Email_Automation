@@ -14,7 +14,7 @@ const STATUS_TONES = {
   sending: 'warn',
   paused: 'neutral',
   completed: 'success',
-  cancelled: 'danger',
+  canceled: 'danger',
   failed: 'danger',
 }
 
