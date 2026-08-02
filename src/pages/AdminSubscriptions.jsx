@@ -5,6 +5,7 @@ import Button from '../components/ui/Button.jsx'
 import { ListSkeleton } from '../components/ui/Skeleton.jsx'
 import Pagination from '../components/ui/Pagination.jsx'
 import ActivateSubscriptionModal from '../components/ActivateSubscriptionModal.jsx'
+import StartTrialModal from '../components/StartTrialModal.jsx'
 import { IconSearch, IconCreditCard } from '../components/Icons.jsx'
 import { listSubscriptions } from '../lib/api.js'
 import './AdminSubscriptions.css'
@@ -23,7 +24,10 @@ function StatusCell({ subscription }) {
   if (subscription.active) {
     return (
       <div className="asub-status">
-        <Badge tone="success" dot>Active</Badge>
+        <span className="asub-status__badges">
+          <Badge tone="success" dot>Active</Badge>
+          {subscription.isTrial && <Badge tone="info">Trial</Badge>}
+        </span>
         <span className="asub-status__days">{subscription.daysRemaining} day{subscription.daysRemaining === 1 ? '' : 's'} left</span>
       </div>
     )
@@ -46,6 +50,7 @@ export default function AdminSubscriptions() {
   const [filter, setFilter] = useState('all')
   const [page, setPage] = useState(1)
   const [activateUser, setActivateUser] = useState(null)
+  const [trialUser, setTrialUser] = useState(null)
   const pageSize = 50
 
   const load = () => {
@@ -127,6 +132,16 @@ export default function AdminSubscriptions() {
                 <Button variant="outline" onClick={() => setActivateUser(u)}>
                   {u.subscription.active ? 'Renew' : 'Activate'}
                 </Button>
+                {!u.subscription.active && (
+                  <Button
+                    variant="ghost"
+                    onClick={() => setTrialUser(u)}
+                    disabled={u.trialUsed}
+                    title={u.trialUsed ? 'Trial already used' : 'Start a free trial'}
+                  >
+                    {u.trialUsed ? 'Trial used' : 'Start trial'}
+                  </Button>
+                )}
               </div>
             </div>
           ))}
@@ -138,6 +153,13 @@ export default function AdminSubscriptions() {
         open={!!activateUser}
         user={activateUser}
         onClose={() => setActivateUser(null)}
+        onActivated={load}
+      />
+
+      <StartTrialModal
+        open={!!trialUser}
+        user={trialUser}
+        onClose={() => setTrialUser(null)}
         onActivated={load}
       />
     </>

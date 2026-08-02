@@ -7,6 +7,7 @@ import Button from '../components/ui/Button.jsx'
 import { FormSkeleton } from '../components/ui/Skeleton.jsx'
 import { IconUsers, IconMail, IconCheck, IconAlert, IconCreditCard } from '../components/Icons.jsx'
 import ActivateSubscriptionModal from '../components/ActivateSubscriptionModal.jsx'
+import StartTrialModal from '../components/StartTrialModal.jsx'
 import SendGapPanel from '../components/SendGapPanel.jsx'
 import { getUser } from '../lib/api.js'
 import './UserDetail.css'
@@ -18,6 +19,7 @@ export default function UserDetail() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [showActivate, setShowActivate] = useState(false)
+  const [showTrial, setShowTrial] = useState(false)
 
   const load = () => {
     setLoading(true)
@@ -30,15 +32,16 @@ export default function UserDetail() {
 
   useEffect(load, [id])
 
-  // ActivateSubscriptionModal expects camelCase fields (matches the shape
-  // listSubscriptions() already returns); getUser() here spreads the raw
-  // profile row, so normalize the couple of fields that differ.
-  const activateModalUser = user && {
+  // ActivateSubscriptionModal/StartTrialModal expect camelCase fields
+  // (matches the shape listSubscriptions() already returns); getUser() here
+  // spreads the raw profile row, so normalize the couple of fields that differ.
+  const subscriptionModalUser = user && {
     id: user.id,
     name: user.name,
     email: user.email,
     whatsappNumber: user.whatsapp_number,
     subscription: user.subscription,
+    trialUsed: user.trialUsed,
   }
 
   if (error) {
@@ -88,9 +91,23 @@ export default function UserDetail() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <Panel
               title="Subscription"
-              actions={<Button variant="outline" icon={<IconCreditCard size={14} />} onClick={() => setShowActivate(true)}>
-                {user?.subscription?.active ? 'Renew' : 'Activate'}
-              </Button>}
+              actions={
+                <div style={{ display: 'flex', gap: 8 }}>
+                  {!user?.subscription?.active && (
+                    <Button
+                      variant="ghost"
+                      onClick={() => setShowTrial(true)}
+                      disabled={!!user?.trialUsed}
+                      title={user?.trialUsed ? 'Trial already used' : 'Start a free trial'}
+                    >
+                      {user?.trialUsed ? 'Trial used' : 'Start trial'}
+                    </Button>
+                  )}
+                  <Button variant="outline" icon={<IconCreditCard size={14} />} onClick={() => setShowActivate(true)}>
+                    {user?.subscription?.active ? 'Renew' : 'Activate'}
+                  </Button>
+                </div>
+              }
             >
               {user?.subscription?.neverSubscribed ? (
                 <div className="ud-conn ud-conn--no">
@@ -101,7 +118,10 @@ export default function UserDetail() {
                 <>
                   <div className="ud-conn ud-conn--ok">
                     <IconCheck size={18} />
-                    <span>Active — {user.subscription.daysRemaining} day{user.subscription.daysRemaining === 1 ? '' : 's'} left</span>
+                    <span>
+                      {user.subscription.isTrial ? 'Trial active' : 'Active'} — {user.subscription.daysRemaining} day{user.subscription.daysRemaining === 1 ? '' : 's'} left
+                    </span>
+                    {user.subscription.isTrial && <Badge tone="info">Trial</Badge>}
                   </div>
                   <div className="ud-field" style={{ marginTop: 12 }}>
                     <span className="ud-field__label">Expires</span>
@@ -124,6 +144,12 @@ export default function UserDetail() {
                 <div className="ud-field" style={{ marginTop: 8 }}>
                   <span className="ud-field__label">Last paid</span>
                   <span className="ud-field__value">{user.subscription.currency} {Number(user.subscription.amount).toLocaleString()} ({user.subscription.paymentMethod})</span>
+                </div>
+              )}
+              {user?.trialUsed && (
+                <div className="ud-field" style={{ marginTop: 8 }}>
+                  <span className="ud-field__label">Trial</span>
+                  <span className="ud-field__value">Already used (one-time only)</span>
                 </div>
               )}
             </Panel>
@@ -164,8 +190,15 @@ export default function UserDetail() {
 
       <ActivateSubscriptionModal
         open={showActivate}
-        user={activateModalUser}
+        user={subscriptionModalUser}
         onClose={() => setShowActivate(false)}
+        onActivated={load}
+      />
+
+      <StartTrialModal
+        open={showTrial}
+        user={subscriptionModalUser}
+        onClose={() => setShowTrial(false)}
         onActivated={load}
       />
     </>

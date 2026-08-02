@@ -142,3 +142,12 @@ export function activateSubscription(userId, { amount, currency, paymentMethod, 
     body: JSON.stringify({ amount, currency, paymentMethod, note, whatsappNumber }),
   })
 }
+
+/* Grants a one-time free trial. The backend rejects this with a 409 if the
+   account has ever had one before, or already has an active subscription. */
+export function startTrial(userId, { days, note }) {
+  return request(`/admin/subscriptions/${userId}/start-trial`, {
+    method: 'POST',
+    body: JSON.stringify({ days, note }),
+  })
+}
