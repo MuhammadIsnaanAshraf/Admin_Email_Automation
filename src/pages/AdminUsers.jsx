@@ -150,7 +150,14 @@ export default function AdminUsers() {
                     }
                   </div>
                   <div className="au-row__info">
-                    <span className="au-row__name">{u.name || u.email || 'Unknown'}</span>
+                    <span className="au-row__name">
+                      {u.name || u.email || 'Unknown'}
+                      {/* Read-only — there is no control here to set this; it's
+                          only ever changed by a manual SQL update (see
+                          20240116000000_account_status.sql). Only shown for the
+                          exceptional case so the common (active) row stays clean. */}
+                      {u.accountStatus === 'inactive' && <Badge tone="danger">Inactive</Badge>}
+                    </span>
                     <span className="au-row__email">{u.email}</span>
                   </div>
                 </div> 

@@ -59,7 +59,12 @@ export default function UserDetail() {
         title={user?.name || user?.email || 'User Detail'}
         subtitle={user ? `Joined ${user.created_at ? new Date(user.created_at).toLocaleDateString() : '—'}` : ''}
         onBack={() => navigate('/users')}
-        badges={user ? <Badge tone={user.role === 'admin' ? 'success' : 'neutral'}>{user.role || 'user'}</Badge> : null}
+        badges={user ? (
+          <>
+            <Badge tone={user.role === 'admin' ? 'success' : 'neutral'}>{user.role || 'user'}</Badge>
+            {user.accountStatus === 'inactive' && <Badge tone="danger">Inactive</Badge>}
+          </>
+        ) : null}
         icon={<IconUsers size={22} />}
       />
 
@@ -80,6 +85,16 @@ export default function UserDetail() {
               <div className="ud-field">
                 <span className="ud-field__label">Role</span>
                 <span className="ud-field__value">{user?.role || 'user'}</span>
+              </div>
+              <div className="ud-field">
+                <span className="ud-field__label">Account status</span>
+                <span className="ud-field__value">
+                  {user?.accountStatus === 'inactive' ? (
+                    <Badge tone="danger">Inactive</Badge>
+                  ) : (
+                    <Badge tone="success">Active</Badge>
+                  )}
+                </span>
               </div>
               <div className="ud-field">
                 <span className="ud-field__label">Created</span>
