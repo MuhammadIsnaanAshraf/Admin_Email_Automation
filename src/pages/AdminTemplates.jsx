@@ -30,8 +30,8 @@ export default function AdminTemplates() {
   return (
     <>
       <PageHeader
-        title="Templates"
-        subtitle={`${total} template${total !== 1 ? 's' : ''} across all users`}
+        title="Email Compose"
+        subtitle={`${total} email compose${total !== 1 ? 's' : ''} across all users`}
         icon={<IconFile size={22} />}
       />
 
@@ -51,7 +51,7 @@ export default function AdminTemplates() {
       {loading ? (
         <div className="at-table"><ListSkeleton items={5} /></div>
       ) : templates.length === 0 ? (
-        <div className="at-table"><div className="at-empty">No templates found.</div></div>
+        <div className="at-table"><div className="at-empty">No email composes found.</div></div>
       ) : (
         <div className="at-table">
           <div className="at-header">

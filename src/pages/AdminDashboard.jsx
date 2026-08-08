@@ -83,7 +83,7 @@ export default function AdminDashboard() {
           <span className="ad-stat__icon ad-stat__icon--templates"><IconFile size={20} /></span>
           <div className="ad-stat__body">
             <span className="ad-stat__value">{stats?.totalTemplates?.toLocaleString() || '0'}</span>
-            <span className="ad-stat__label">Templates</span>
+            <span className="ad-stat__label">Email Compose</span>
           </div>
         </div>
         <div className="ad-stat">

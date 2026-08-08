@@ -27,7 +27,7 @@ export default function TemplateDetail() {
   if (error) {
     return (
       <div>
-        <PageHeader title="Template Detail" onBack={() => navigate('/templates')} />
+        <PageHeader title="Email Compose Detail" onBack={() => navigate('/templates')} />
         <div className="td-error">{error}</div>
       </div>
     )
@@ -36,7 +36,7 @@ export default function TemplateDetail() {
   return (
     <>
       <PageHeader
-        title={template?.name || 'Template'}
+        title={template?.name || 'Email Compose'}
         subtitle={template ? `By ${template.owner?.name || template.owner?.email || 'Unknown'}` : ''}
         onBack={() => navigate('/templates')}
         icon={<IconFile size={22} />}
