@@ -1,4 +1,7 @@
 .ac-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   margin-bottom: 18px;
 }
 
@@ -54,7 +57,8 @@
 .ac-header__cell--owner  { width: 130px; flex-shrink: 0; }
 .ac-header__cell--status { width: 80px; flex-shrink: 0; }
 .ac-header__cell--stats  { width: 100px; flex-shrink: 0; text-align: right; }
-.ac-header__cell--date   { width: 90px; flex-shrink: 0; text-align: right; }
+/* Wide enough for a two-line send time ("24 Aug, 9:00 AM" + "in 2d"). */
+.ac-header__cell--date   { width: 130px; flex-shrink: 0; text-align: right; }
 
 .ac-row {
   display: flex;
@@ -121,7 +125,7 @@
   color: var(--text-dim);
   white-space: nowrap;
   flex-shrink: 0;
-  min-width: 90px;
+  min-width: 130px;
   text-align: right;
 }
 
@@ -131,3 +135,55 @@
   font-size: 14px;
   color: var(--text-muted);
 }
+
+/* Status filters — 'Upcoming' carries the count of future-booked campaigns. */
+.ac-filters { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.ac-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.ac-filter:hover { color: var(--text); border-color: var(--border-strong); }
+.ac-filter--on {
+  background: rgba(70, 240, 25, 0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.ac-filter__count {
+  min-width: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: #0a0f0a;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+}
+
+/* Send Time cell */
+.ac-when { display: flex; flex-direction: column; align-items: flex-end; gap: 1px; }
+.ac-when__time { font-size: 12.5px; color: var(--text); }
+.ac-when__note {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.ac-when--upcoming .ac-when__time { color: var(--text-strong); font-weight: 600; }
+.ac-when--upcoming .ac-when__note { color: var(--accent); }

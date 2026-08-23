@@ -103,8 +103,8 @@ export function getListRecipients(listId, { filter = 'all', search = '', sort = 
 
 // ── Admin — Campaigns ──
 
-export function listAdminCampaigns({ search = '', sort = 'created_at', dir = 'desc', page = 1, pageSize = 50, signal } = {}) {
-  const qs = new URLSearchParams({ sort, dir, page: String(page), pageSize: String(pageSize) })
+export function listAdminCampaigns({ search = '', status = 'all', sort = 'created_at', dir = 'desc', page = 1, pageSize = 50, signal } = {}) {
+  const qs = new URLSearchParams({ status, sort, dir, page: String(page), pageSize: String(pageSize) })
   if (search) qs.set('search', search)
   return request(`/admin/campaigns?${qs.toString()}`, { signal })
 }
